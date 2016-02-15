@@ -141,7 +141,7 @@ def parse_css_data(data):
 
     return props
 
-class LESSCompletions(sublime_plugin.EventListener):
+class SASSCompletions(sublime_plugin.EventListener):
     props = None
     rex = None
 
