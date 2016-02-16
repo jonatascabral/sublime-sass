@@ -1,6 +1,7 @@
 {
   "fileTypes" : [
-    "less",
+    "sass",
+    "scss",
     "css"
   ],
   "foldingStartMarker" : "\/\\*\\*(?!\\*)|\\{\\s*($|\/\\*(?!.*?\\*\/.*\\S))",
@@ -43,16 +44,16 @@
     "property-values" : {
       "patterns" : [
         {
-          "include" : "#less-variables"
+          "include" : "#sass-variables"
         },
         {
-          "include" : "#less-data-uri"
+          "include" : "#sass-data-uri"
         },
         {
-          "include" : "#less-functions"
+          "include" : "#sass-functions"
         },
         {
-          "include" : "#less-operators"
+          "include" : "#sass-operators"
         },
         {
           "include" : "#color-values"
@@ -61,7 +62,7 @@
           "include" : "#numeric-values"
         },
         {
-          "include" : "#less-parameters"
+          "include" : "#sass-parameters"
         },
         {
           "match" : "\\b(absolute|all(-scroll)?|always|subpixel-antialiased|antialiased|armenian|auto|avoid|baseline|below|bidi-override|block|bold|bolder|border-box|both|bottom|break-all|break-word|capitalize|center|char|circle|cjk-ideographic|content-box|col-resize|collapse|crosshair|dashed|decimal-leading-zero|decimal|default|disabled|disc|distribute-all-lines|distribute-letter|distribute-space|distribute|dotted|double|e-resize|ellipsis|fixed|geometricPrecision|georgian|groove|hand|hebrew|help|hidden|hiragana-iroha|hiragana|horizontal|ideograph-alpha|ideograph-numeric|ideograph-parenthesis|ideograph-space|inactive|inherit|inline-block|inline|inset|inside|inter-ideograph|inter-word|italic|justify|katakana-iroha|katakana|keep-all|left|lighter|line-edge|line-through|line|list-item|loose|lower-alpha|lower-greek|lower-latin|lower-roman|lowercase|lr-tb|ltr|medium|middle|move|n-resize|ne-resize|newspaper|no-drop|no-repeat|nw-resize|none|normal|not-allowed|nowrap|oblique|optimize(Legibility|Quality|Speed)|outset|outside|overline|pointer|pre(-(wrap|line))?|progress|relative|repeat-x|repeat-y|repeat|right|ridge|row-resize|rtl|s-resize|scroll|se-resize|separate|small-caps|solid|square|static|strict|sub|super|sw-resize|table-caption|table-cell|table-column-group|table-column|table-footer-group|table-header-group|table-row-group|table|tb-rl|text-bottom|text-top|textfield|text|thick|thin|top|transparent|underline|upper-alpha|upper-latin|upper-roman|uppercase|vertical(-(ideographic|text))?|visible(Painted|Fill|Stroke)?|w-resize|wait|whitespace|zero|smaller|larger|((xx?-)?(small|large))|painted|fill|stroke)\\b",
@@ -181,7 +182,7 @@
               "name" : "punctuation.definition.entity.css"
             }
           },
-          "name" : "entity.other.attribute-name.pseudo-class.less"
+          "name" : "entity.other.attribute-name.pseudo-class.sass"
         },
         {
           "match" : "(:)(checked|enabled|default|disabled|indeterminate|invalid|optional|required|valid)\\b",
@@ -427,17 +428,17 @@
           "name" : "punctuation.definition.comment.css"
         }
       },
-      "name" : "comment.line.double-slash.less"
+      "name" : "comment.line.double-slash.sass"
     },
-    "less-variables" : {
+    "sass-variables" : {
       "patterns" : [
         {
-          "match" : "@[a-zA-Z0-9_-][\\w-]*",
-          "name" : "variable.other.less"
+          "match" : "\\$[a-zA-Z0-9_-][\\w-]*",
+          "name" : "variable.other.sass"
         },
         {
-          "match" : "@{[a-zA-Z0-9_-][\\w-]*}",
-          "name" : "variable.interpolation.less"
+          "match" : "\\${[a-zA-Z0-9_-][\\w-]*}",
+          "name" : "variable.interpolation.sass"
         },
         {
           "begin" : "`",
@@ -449,7 +450,7 @@
           "end" : "`",
           "beginCaptures" : {
             "1" : {
-              "name" : "keyword.operator.less"
+              "name" : "keyword.operator.sass"
             }
           },
           "name" : "comment markup.raw"
@@ -459,7 +460,7 @@
           "end" : "\"",
           "beginCaptures" : {
             "1" : {
-              "name" : "keyword.operator.less"
+              "name" : "keyword.operator.sass"
             }
           },
           "name" : "string.quoted.double.css comment markup.raw"
@@ -469,30 +470,30 @@
           "end" : "'",
           "beginCaptures" : {
             "1" : {
-              "name" : "keyword.operator.less"
+              "name" : "keyword.operator.sass"
             }
           },
           "name" : "string.quoted.single.css comment markup.raw"
         }
       ]
     },
-    "less-declarations" : {
+    "sass-declarations" : {
       "patterns" : [
         {
-          "match" : "(?>@[a-zA-Z0-9_-][\\w-]*+)(?!:)",
-          "name" : "variable.other.less"
+          "match" : "(?>\\$[a-zA-Z0-9_-][\\w-]*+)(?!:)",
+          "name" : "variable.other.sass"
         },
         {
-          "match" : "@[a-zA-Z0-9_-][\\w-]*",
-          "name" : "variable.declaration.less"
+          "match" : "\\$[a-zA-Z0-9_-][\\w-]*",
+          "name" : "variable.declaration.sass"
         }
       ]
     },
-    "less-operators" : {
+    "sass-operators" : {
       "match" : "\/|!important|$|%|&|\\*|\\-\\-|\\-|\\+\\+|\\+|~|===|==|=|!=|!==|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|(?<!\\()\/=|%=|\\+=|\\-=|&=|when\\b|and\\b|not\\b",
-      "name" : "keyword.operator.less"
+      "name" : "keyword.operator.sass"
     },
-    "less-data-uri" : {
+    "sass-data-uri" : {
       "patterns": [
         {
           "begin" : "(url)(\\()(data:)",
@@ -505,10 +506,10 @@
               "name" : "punctuation.section.function.css"
             },
             "3" : {
-              "name" : "parameter.less.data-uri comment markup.raw"
+              "name" : "parameter.sass.data-uri comment markup.raw"
             }
           },
-          "contentName" : "parameter.less.data-uri comment markup.raw",
+          "contentName" : "parameter.sass.data-uri comment markup.raw",
           "endCaptures" : {
             "1" : {
               "name" : "punctuation.section.function.css"
@@ -526,10 +527,10 @@
               "name" : "punctuation.section.function.css"
             },
             "3" : {
-              "name" : "parameter.less.data-uri comment markup.raw"
+              "name" : "parameter.sass.data-uri comment markup.raw"
             }
           },
-          "contentName" : "parameter.less.data-uri comment markup.raw",
+          "contentName" : "parameter.sass.data-uri comment markup.raw",
           "endCaptures" : {
             "1" : {
               "name" : "punctuation.section.function.css"
@@ -547,10 +548,10 @@
               "name" : "punctuation.section.function.css"
             },
             "3" : {
-              "name" : "parameter.less.data-uri comment markup.raw"
+              "name" : "parameter.sass.data-uri comment markup.raw"
             }
           },
-          "contentName" : "parameter.less.data-uri comment markup.raw",
+          "contentName" : "parameter.sass.data-uri comment markup.raw",
           "endCaptures" : {
             "1" : {
               "name" : "punctuation.section.function.css"
@@ -559,23 +560,23 @@
         }
       ]
     },
-    "less-functions" : {
+    "sass-functions" : {
       "patterns": [
         {
           "match" : "([%a-zA-Z\\-\\_\\d]*)(?=\\()",
-          "name" : "support.function.less"
+          "name" : "support.function.sass"
           },
         {
           "match" : "([\\.#](?![0-9])[a-zA-Z0-9_-]+(?=\\())",
           "captures" : {
             "1" : {
-              "name" : "entity.other.attribute-name.class.css entity.other.less.mixin"
+              "name" : "entity.other.attribute-name.class.css entity.other.sass.mixin"
             }
           }
         }
       ]
     },
-    "less-at-rules" : {
+    "sass-at-rules" : {
       "match" : "^\\s*((@)(?:-(?:webkit|moz|o)-)?(charset|import|namespace|media|page|font-face|keyframes|supports|document)\\b)",
       "captures" : {
         "1" : {
@@ -587,7 +588,7 @@
       },
       "name" : "meta.at-rule.css"
     },
-    "less-parameters" : {
+    "sass-parameters" : {
       "begin" : "\\(|(}\\s*,)",
       "end" : "\\)|{",
       "patterns": [
@@ -595,10 +596,10 @@
           "include" : "#color-values"
         },
         {
-          "include" : "#less-parameters"
+          "include" : "#sass-parameters"
         },
         {
-          "include" : "#less-functions"
+          "include" : "#sass-functions"
         },
         {
           "include" : "#numeric-values"
@@ -610,17 +611,17 @@
           "include" : "#string-single"
         },
         {
-          "include" : "#less-variables"
+          "include" : "#sass-variables"
         },
         {
           "match" : "(?:\\:/)?[\\/\\.a-zA-Z0-9_\\-]*",
           "name" : "variable.parameter.misc.css"
         },
         {
-          "include" : "#less-operators"
+          "include" : "#sass-operators"
         }
       ],
-      "name" : "parameter.less"
+      "name" : "parameter.sass"
     }
   },
   "uuid" : "69AA0917-B7BB-11D9-A7E2-000D93C8BE28",
@@ -632,16 +633,16 @@
       "include" : "#comment-line"
     },
     {
-      "include" : "#less-at-rules"
+      "include" : "#sass-at-rules"
     },
     {
-      "include" : "#less-declarations"
+      "include" : "#sass-declarations"
     },
     {
-      "include" : "#less-variables"
+      "include" : "#sass-variables"
     },
     {
-      "include" : "#less-functions"
+      "include" : "#sass-functions"
     },
     {
       "include" : "#string-double"
@@ -656,16 +657,16 @@
       "include" : "#rule-list"
     },
     {
-      "include" : "#less-operators"
+      "include" : "#sass-operators"
     },
     {
-      "include" : "#less-parameters"
+      "include" : "#sass-parameters"
     },
     {
       "include" : "#numeric-values"
     }
   ],
-  "comment" : "LESS",
-  "name" : "LESS",
-  "scopeName" : "source.less"
+  "comment" : "SASS",
+  "name" : "SASS",
+  "scopeName" : "source.sass"
 }

@@ -1,1 +1,1 @@
-{"url": "https://github.com/jonatascabral/sublime-sass", "dependencies": [], "version": "1.0.0", "platforms": ["*"], "description": "SASS syntax highlighting for Sublime Text.", "sublime_text": "*"}
+{"dependencies": [], "description": "Package SASS para sublime text", "version": "2016.02.15.17.58.01", "platforms": ["*"], "url": "https://github.com/jonatascabral/sublime-sass", "sublime_text": "*"}

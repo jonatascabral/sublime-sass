@@ -34,6 +34,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#sass-placeholders</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#sass-declarations</string>
 		</dict>
 		<dict>
@@ -83,7 +87,7 @@
 					<key>comment</key>
 					<string>http://www.w3.org/TR/CSS21/syndata.html#value-def-color</string>
 					<key>match</key>
-					<string>\b(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
+					<string>\b(black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)\b</string>
 					<key>name</key>
 					<string>support.constant.color.w3c-standard-color-name.css</string>
 				</dict>
@@ -193,9 +197,24 @@
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*((@)(?:-(?:webkit|moz|o)-)?(charset|import|namespace|media|page|font-face|keyframes|supports|document)\b)</string>
+			<string>^\s*((@)(?:-(?:webkit|moz|o)-)?(charset|import|namespace|media|page|font-face|keyframes|supports|document|function|if|mixin|return|extend|include)\b)</string>
 			<key>name</key>
 			<string>meta.at-rule.css</string>
+		</dict>
+		<key>sass-placeholders</key>
+		<dict>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.at-rule.css</string>
+				</dict>
+			</dict>
+			<key>match</key>
+			<string>(%[a-zA-Z0-9_-]+)</string>
+			<key>name</key>
+			<string>sass.extend.placeholder</string>
 		</dict>
 		<key>sass-data-uri</key>
 		<dict>
@@ -350,7 +369,7 @@
 		<key>sass-operators</key>
 		<dict>
 			<key>match</key>
-			<string>/|!important|$|%|&amp;|\*|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&gt;|&lt;|&gt;|!|&amp;&amp;|\|\||\?\:|(?&lt;!\()/=|%=|\+=|\-=|&amp;=|when\b|and\b|not\b</string>
+			<string>/|!important|!default|$|%|&amp;|\*|\-\-|\-|\+\+|\+|~|===|==|=|!=|!==|&lt;=|&gt;=|&lt;&lt;=|&gt;&gt;=|&gt;&gt;&gt;=|&lt;&gt;|&lt;|&gt;|!|&amp;&amp;|\|\||\?\:|(?&lt;!\()/=|%=|\+=|\-=|&amp;=|when\b|and\b|not\b</string>
 			<key>name</key>
 			<string>keyword.operator.sass</string>
 		</dict>
@@ -404,24 +423,80 @@
 				</dict>
 			</array>
 		</dict>
-		<key>sass-command-blocks</key>
-        <dict>
-            <key>patterns</key>
-            <array>
-                <dict>
-                    <key>match</key>
-                    <string>@(if|function|return|include)</string>
-                    <key>name</key>
-                    <string>command.other.sass</string>
-                </dict>
-                <dict>
-                    <key>match</key>
-                    <string>@(endif|endfunction)</string>
-                    <key>name</key>
-                    <string>command.other.sass</string>
-                </dict>
-            </array>
-        </dict>
+		<key>sass-variables</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\$[a-zA-Z0-9_-][\w-]*</string>
+					<key>name</key>
+					<string>variable.other.sass</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\${[a-zA-Z0-9_-][\w-]*}</string>
+					<key>name</key>
+					<string>variable.interpolation.sass</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>`</string>
+					<key>end</key>
+					<string>`</string>
+					<key>name</key>
+					<string>comment markup.raw</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(~)`</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.sass</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>`</string>
+					<key>name</key>
+					<string>comment markup.raw</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(~)"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.sass</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>name</key>
+					<string>string.quoted.double.css comment markup.raw</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(~)'</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.operator.sass</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>'</string>
+					<key>name</key>
+					<string>string.quoted.single.css comment markup.raw</string>
+				</dict>
+			</array>
+		</dict>
 		<key>numeric-values</key>
 		<dict>
 			<key>patterns</key>
@@ -613,6 +688,12 @@
 					<string>\!\s*important</string>
 					<key>name</key>
 					<string>keyword.other.important.css</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\!\s*default</string>
+					<key>name</key>
+					<string>keyword.other.default.css</string>
 				</dict>
 			</array>
 		</dict>
